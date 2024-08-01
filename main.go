@@ -18,7 +18,6 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-playground/form/v4"
 	"github.com/go-playground/validator/v10"
-	"github.com/joho/godotenv"
 )
 
 const (
@@ -50,11 +49,6 @@ type App struct {
 }
 
 func createApp() (*App, error) {
-	err := godotenv.Load()
-	if err != nil {
-		return nil, err
-	}
-
 	app := &App{}
 	app.templates = createTemplates()
 

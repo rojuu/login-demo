@@ -6,7 +6,6 @@ require (
 	github.com/go-chi/chi/v5 v5.0.12
 	github.com/go-playground/form/v4 v4.2.1
 	github.com/go-playground/validator/v10 v10.22.0
-	github.com/joho/godotenv v1.5.1
 )
 
 require (

@@ -1,0 +1,42 @@
+{{ define "html_begin" }}
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <link rel="stylesheet" href="/static/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"
+    />
+    <script
+      src="https://unpkg.com/htmx.org@2.0.1/dist/htmx.js"
+      integrity="sha384-gpIh5aLQ0qmX8kZdyhsd6jA24uKLkqIr1WAGtantR4KsS97l/NRBvh8/8OYGThAf"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+  </head>
+  <body hx-boost="true">
+{{ end }}
+
+{{ define "html_end"}}
+  </body>
+</html>
+{{ end }}
+
+{{ define "nav_bar" }}
+{{ $loggedIn := .LoggedIn }}
+
+<nav class="border-b border-gray-700 p-4">
+  <strong class="text-lg">Demo</strong>
+  {{ if $loggedIn }}
+    <span>
+      <span aria-busy="true" id="logout_spinner" class="htmx-indicator htmx-hidden"> </span>
+      <a class="text-sky-500" href="#" hx-post="/logout" hx-indicator="#logout_spinner">
+        Logout
+      </a>
+    </span>
+  {{ end }}
+</nav>
+{{ end }}

@@ -1,0 +1,32 @@
+{{ template "html_begin" }}
+
+{{ template "nav_bar" }}
+
+<main>
+  <form hx-post="/login" hx-indicator="#login_spinner">
+    {{ block "login_form_contents" . }}
+    <label>
+      Email
+      <input name="email" 
+        {{ if .Inputs.Email }} value="{{ .Inputs.Email }}" {{ end }}
+        {{ if .Errors.Email }} aria-invalid="true" aria-describedby="invalid-helper" {{ end }}
+      />
+      {{ if .Errors.Email }} <small id="invalid-helper">{{ .Errors.Email }}</small> {{ end }}
+    </label>
+    <label>
+      Password
+      <input name="password" type="password"
+        {{ if .Inputs.Password }} value="{{ .Inputs.Password }}" {{ end }}
+        {{ if .Errors.Password }} aria-invalid="true" aria-describedby="invalid-helper" {{ end }}
+      />
+      {{ if .Errors.Password }} <small id="invalid-helper">{{ .Errors.Password }}</small> {{ end }}
+    </label>
+
+    <button type="submit">
+      <span id="login_spinner" aria-busy="true" class="htmx-indicator htmx-hidden"> </span>Login
+    </button>
+    {{ end }}
+  </form>
+</main>
+
+{{ template "html_end" }}
